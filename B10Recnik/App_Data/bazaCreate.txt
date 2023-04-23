@@ -1,0 +1,6 @@
+﻿CREATE TABLE Reci(
+  ID bigint identity(1,1) primary key not null,
+  Engleski nvarchar(50) not null,
+  Srpski nvarchar(50) not null,
+  Opis nvarchar(1024) null
+  );
