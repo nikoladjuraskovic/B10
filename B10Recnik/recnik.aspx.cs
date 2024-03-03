@@ -18,7 +18,7 @@ namespace B10Recnik
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if(TextBox1.Text!="")
+            if(TextBox1.Text!="" || TextBox2.Text !="")
             {
                 Label5.Text = "";
                 try
@@ -27,7 +27,7 @@ namespace B10Recnik
                     string upit = "";
                     if(DropDownList1.SelectedValue=="SE")
                     {
-                        upit = "SELECT Engleski,Opis FROM Reci WHERE Srpski='" + TextBox1.Text + "'";
+                        upit = "SELECT Engleski,Opis FROM Reci WHERE Srpski='" + TextBox2.Text + "'";
                     }
                     else if(DropDownList1.SelectedValue =="ES")
                     {
@@ -45,7 +45,11 @@ namespace B10Recnik
                     if(dr.HasRows)
                     {
                         dr.Read();
-                        TextBox2.Text = dr[0].ToString();
+                        if(DropDownList1.SelectedValue=="SE")
+                            TextBox1.Text = dr[0].ToString();
+                        else
+                            TextBox2.Text = dr[0].ToString();
+
                         TextBox3.Text = dr[1].ToString();
                     }
                     else
